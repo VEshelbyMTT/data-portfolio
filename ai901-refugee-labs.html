@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="How Victoria Eshelby built secure, cost controlled Azure AI labs for refugee learners with AI assisted engineering.">
+  <meta name="robots" content="index, follow">
+  <title>AI-901 Refugee Labs | Victoria Eshelby</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <header class="site-header">
+    <a class="wordmark" href="index.html" aria-label="Portfolio home">VE</a>
+    <nav aria-label="Case study navigation">
+      <a href="#challenge">Challenge</a>
+      <a href="#solution">Solution</a>
+      <a href="#ai">How AI helped</a>
+      <a href="#tenant-safety">Tenant safety</a>
+      <a class="nav-cta" href="index.html#work">Back to portfolio</a>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <section class="case-hero">
+      <div>
+        <p class="eyebrow">Completed September 2026 · AI for social impact</p>
+        <h1>A workshop lab trainers can run themselves.</h1>
+        <p class="hero-summary">
+          As a Microsoft technical trainer, I usually work with hosted lab platforms such as
+          Skillable. They are valuable at scale, but cost and access can make them impractical
+          for small initiatives. I could not secure internal funding, but I still wanted to work
+          with Maud on the refugee learning initiative. I built a temporary Azure lab so learners
+          could still get hands on experience.
+        </p>
+      </div>
+      <aside class="signal-card" aria-label="Project results">
+        <p class="signal-label">Delivered</p>
+        <p class="signal-title">29 learner workspaces</p>
+        <ul>
+          <li>One controlled workspace per learner</li>
+          <li>Designed for a workshop budget under USD 100</li>
+          <li>Time boxed, least privilege access</li>
+          <li>Shared keyless AI services</li>
+          <li>English, Turkish, and Arabic guidance</li>
+        </ul>
+      </aside>
+    </section>
+
+    <section class="section section-dark case-section" id="tenant-safety">
+      <div class="section-heading">
+        <p class="eyebrow">Public implementation guide</p>
+        <h2>Before you give workshop learners access to an Azure tenant</h2>
+        <p>
+          A trainer managed lab shifts responsibility from a hosted provider to you. Treat it as
+          temporary infrastructure with real identities, permissions, costs, and data exposure.
+        </p>
+      </div>
+
+      <div class="safety-grid">
+        <article class="safety-item">
+          <p class="case-number">01 · Boundary</p>
+          <h3>Prefer a dedicated training environment</h3>
+          <p>Use a separate training tenant and subscription where possible. Otherwise isolate the workshop and verify that learners cannot enumerate unrelated resources.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">02 · Identity</p>
+          <h3>Plan the full account lifecycle</h3>
+          <p>Choose guests or temporary accounts deliberately. Avoid shared identities, set an expiry, and document how sign in methods and sessions will be revoked.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">03 · Authorization</p>
+          <h3>Scope every permission narrowly</h3>
+          <p>Grant the smallest role at the smallest resource scope. Test management plane visibility and data plane access separately; many Azure services require both.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">04 · Authentication</p>
+          <h3>Keep sign in outside AI generated scripts</h3>
+          <p>Let AI draft resource logic, but authenticate interactively in your own terminal. Never paste passwords, tokens, device codes, tenant details, or credential files into chat.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">05 · Secrets</p>
+          <h3>Prefer identity over keys</h3>
+          <p>Use Entra authentication and managed identities where practical. Do not commit generated passwords or distribute one reusable secret to the whole class.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">06 · Cost</p>
+          <h3>Model spend before deployment</h3>
+          <p>Estimate compute, disks, AI usage, networking, and idle services. Set budgets, restrict sizes, schedule shutdown, and remember that stopped machines still incur storage costs.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">07 · Network</p>
+          <h3>Minimize public exposure</h3>
+          <p>Review public IPs, remote desktop access, firewall rules, and downloads. A short workshop does not make an open endpoint safe.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">08 · Learner safety</p>
+          <h3>Use suitable data and instructions</h3>
+          <p>Use synthetic or approved data, collect no unnecessary personal information, provide accessibility options, and review examples for vulnerable audiences.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">09 · Validation</p>
+          <h3>Test as a learner</h3>
+          <p>Rehearse sign in, exercises, denial of unrelated access, expiry, recovery, and cleanup through a representative learner account rather than an owner account.</p>
+        </article>
+        <article class="safety-item">
+          <p class="case-number">10 · Teardown</p>
+          <h3>Design deletion before deployment</h3>
+          <p>Preview cleanup, remove role assignments and identities, delete chargeable resources, and verify that no credentials or learner data remain locally.</p>
+        </article>
+      </div>
+
+      <aside class="safety-warning">
+        <strong>Organizational approval still matters.</strong>
+        Confirm security, privacy, acceptable use, procurement, and safeguarding requirements
+        before inviting external users. Technical isolation does not equal organizational approval.
+      </aside>
+
+      <article class="evidence-panel">
+        <div>
+          <p class="publication-label">Privacy safe evidence</p>
+          <h3>AI drafts. The trainer authenticates and executes.</h3>
+          <p>
+            The example uses a real read only preflight against my subscription, but the published
+            evidence shows only state and counts. Account names, tenant IDs, subscription IDs,
+            resource names, tokens, and credentials are excluded.
+          </p>
+          <a class="text-link" href="examples/Test-WorkshopReadiness.ps1">View the sanitized PowerShell example <span aria-hidden="true">→</span></a>
+        </div>
+        <img src="assets/ai-workshop-auth-boundary.png" alt="Redacted workflow showing AI drafting a PowerShell preflight and a trainer authenticating interactively before running it">
+      </article>
+    </section>
+
+    <section class="section case-section" id="challenge">
+      <div class="section-heading">
+        <p class="eyebrow">The challenge</p>
+        <h2>Make small workshops possible without enterprise lab procurement</h2>
+      </div>
+      <div class="case-grid">
+        <article class="case-panel">
+          <h3>The platform gap</h3>
+          <p>
+            Skillable and comparable hosted lab services remove a great deal of operational
+            work, but can be expensive or difficult for an individual trainer to access for a
+            small workshop. The alternative should not be a slide only learning experience.
+          </p>
+        </article>
+        <article class="case-panel">
+          <h3>The product goal</h3>
+          <p>
+            Give trainers a repeatable way to run practical workshops in their own Azure space
+            or a limited subscription, targeting less than USD 100 where cohort size and service
+            choices permit. The refugee programme became the first real implementation.
+          </p>
+        </article>
+        <article class="case-panel">
+          <h3>The learner need</h3>
+          <p>
+            Learners needed safe access to Azure, Microsoft Foundry, and search services so
+            they could complete the exercises themselves rather than only watch a demonstration.
+          </p>
+        </article>
+        <article class="case-panel">
+          <h3>The operational constraints</h3>
+          <p>
+            The environment had to support mixed language and technical experience, isolate
+            unrelated cloud resources, control spend, avoid long lived credentials, and shut
+            down cleanly after the session.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-dark case-section" id="solution">
+      <div class="section-heading">
+        <p class="eyebrow">The solution</p>
+        <h2>A temporary learning environment built around access, cost, and confidence</h2>
+      </div>
+      <div class="case-grid case-grid-three">
+        <article class="work-card">
+          <p class="case-number">01</p>
+          <h3>Automated provisioning</h3>
+          <p>
+            I developed idempotent PowerShell automation for learner identities, virtual
+            machines, policies, role assignments, shared AI resources, and deployment summaries.
+          </p>
+        </article>
+        <article class="work-card">
+          <p class="case-number">02</p>
+          <h3>Security by scope</h3>
+          <p>
+            Learner permissions were restricted to the training resources. Group based access,
+            temporary sign in codes, managed identity, and keyless service connections reduced
+            credential and blast radius risk.
+          </p>
+        </article>
+        <article class="work-card">
+          <p class="case-number">03</p>
+          <h3>Cost aware lifecycle</h3>
+          <p>
+            VM limits, approved sizes, automatic startup and shutdown, time boxed access, cost
+            tags, and preview first cleanup made the environment temporary by design.
+          </p>
+        </article>
+        <article class="work-card">
+          <p class="case-number">04</p>
+          <h3>Accessible delivery</h3>
+          <p>
+            The learner guide used short, numbered instructions in English, Turkish, and Arabic,
+            with browser translation, read aloud support, keyboard guidance, and a phone free
+            sign in path.
+          </p>
+        </article>
+        <article class="work-card">
+          <p class="case-number">05</p>
+          <h3>Safe teardown</h3>
+          <p>
+            A separate cleanup workflow ran in preview mode by default and removed learner
+            resources without deleting the underlying lab or resource group.
+          </p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section case-section" id="ai">
+      <div class="section-heading">
+        <p class="eyebrow">How I used AI</p>
+        <h2>AI accelerated the engineering loop. I retained the decisions.</h2>
+        <p>
+          I used AI in VS Code to move faster across unfamiliar Azure surfaces while keeping
+          architecture, security, testing, and delivery decisions under human control.
+        </p>
+      </div>
+      <div class="case-grid">
+        <article class="case-panel case-panel-accent">
+          <h3>Where AI helped</h3>
+          <ul class="outcome-list outcome-list-dark">
+            <li>Turned delivery constraints into an initial architecture and implementation plan</li>
+            <li>Scaffolded and iterated on PowerShell for Azure and Microsoft Graph</li>
+            <li>Compared hosted labs with trainer managed options and modelled cost trade offs</li>
+            <li>Compared RBAC, managed identity, and time bound access patterns</li>
+            <li>Reviewed failure paths, idempotency, credential handling, and teardown behaviour</li>
+            <li>Helped draft learner and instructor guidance for later human review</li>
+          </ul>
+        </article>
+        <article class="case-panel">
+          <h3>What remained mine</h3>
+          <ul class="outcome-list outcome-list-dark">
+            <li>Defining the reusable trainer owned lab goal and target under USD 100</li>
+            <li>Understanding the learners and setting accessibility requirements</li>
+            <li>Selecting the final architecture and accepting its cost and security trade-offs</li>
+            <li>Testing against the real tenant, subscription limits, regional availability, and learner journey</li>
+            <li>Owning delivery, troubleshooting, safeguarding, and cleanup</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section case-section">
+      <div class="section-heading">
+        <p class="eyebrow">What I learned</p>
+        <h2>Useful AI output starts with operational constraints</h2>
+      </div>
+      <div class="lesson-list">
+        <p><strong>Design for deletion.</strong> Temporary training infrastructure needs a tested exit path, not just a deployment path.</p>
+        <p><strong>Accessibility is architecture.</strong> Identity flows, language, device assumptions, and support routes shape the technical design.</p>
+        <p><strong>AI suggestions need environmental proof.</strong> Service availability, permissions, quotas, and licensing must be checked in the real environment.</p>
+        <p><strong>Keep secrets out of the story.</strong> This case study intentionally excludes tenant identifiers, credentials, resource names, and operational files.</p>
+      </div>
+    </section>
+
+    <section class="closing case-closing">
+      <p class="eyebrow">The result</p>
+      <h2>The missing budget did not become a missing learning experience.</h2>
+      <p class="closing-copy">
+        The project proved a trainer can create a controlled alternative for a small practical
+        workshop when a hosted lab platform is out of reach. It combined technical training,
+        cloud engineering, accessibility, and responsible AI assisted development, and was
+        completed and documented in September 2026.
+      </p>
+      <p class="closing-copy">
+        For the remainder of FY27, I am ready to support more workshops and can provide temporary
+        learner access where the scope, security review, subscription capacity, and budget make it safe.
+      </p>
+      <div class="hero-actions closing-actions">
+        <a class="button button-primary" href="index.html#work">Explore more work</a>
+        <a class="button button-secondary" href="https://www.linkedin.com/in/victoria-eshelby/">Connect on LinkedIn</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Public case study · Tenant details, resource names, credentials, and learner data intentionally excluded.</p>
+    <a href="#main-content">Back to top</a>
+  </footer>
+</body>
+</html>
