@@ -166,8 +166,7 @@ h1 {
 
 h1 span {
   display: inline;
-  color: var(--ink);
-  background: linear-gradient(transparent 58%, var(--cyan) 58%);
+  color: var(--cyan);
 }
 
 .hero-summary {
